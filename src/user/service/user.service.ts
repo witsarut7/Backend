@@ -105,7 +105,7 @@ export class UserService {
   
     const decoded: any = await jwt_decode(acccessToken);
     const userId: string = decoded.user
-    const res = await this.userRepository.findOne(userId)
+    const res = await this.userRepository.findOne({ where: {id:userId["id"]}})
    
     const Objdata: object = {
       id: res.id,
